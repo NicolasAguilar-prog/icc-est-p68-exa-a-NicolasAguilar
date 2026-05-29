@@ -29,11 +29,11 @@ public class LeagueController {
      */
     public League[] sortInsertionDesc(League[] leagues) {
 
-        for (int i = 1; i < leagues.length - 1; i++) {
+        for (int i = 1; i < leagues.length; i++) {
 
             League actual = leagues[i];
 
-            int j = i -1;
+            int j = i - 1;
 
             while (j >= 0 && leagues[j].getTotalActiveGoals() < actual.getTotalActiveGoals()) {
                 leagues[j + 1] = leagues[j];
