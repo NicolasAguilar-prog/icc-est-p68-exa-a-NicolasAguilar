@@ -1,3 +1,7 @@
+import controllers.LeagueController;
+import models.League;
+import models.Player;
+import models.Team;
 
 public class App {
 
@@ -158,23 +162,46 @@ public class App {
                 // Ejemplo:
                 // System.out.println("Listado original:");
                 // controller.printLeagues(leagues);
+                League[] leagues = getLeagues();
+                League[] copia = getLeagues();
+                LeagueController controller = new LeagueController();
+                System.out.println("Listado original: ");
+                controller.printLeagues(leagues);
 
                 // TODO: Crear una copia del arreglo y aplicar el metodo de ordenamiento de su
                 // fila
                 // Fila A: controller.sortSelectionAsc(copia)
                 // Fila B: controller.sortInsertionDesc(copia)
 
+                controller.sortInsertionDesc(copia);
+
                 // TODO: Imprimir listado ordenado
                 // Ejemplo:
                 // System.out.println("Listado ordenado:");
                 // controller.printLeagues(copia);
+                System.out.println("Listado ordenado: ");
+                controller.printLeagues(copia);
 
                 // TODO: Realizar busqueda 1 e imprimir si se encontro o no
                 // Fila A: buscar 42 goles activos
                 // Fila B: buscar 67 goles activos
 
+                System.out.println("Busqueda 1 (buscar 67 goles activos): ");
+                League result = controller.binarySearchByTotalActiveGoals(copia, 67);
+                if(result != null){
+                        System.out.println("Encontrado: "+ result.getName());
+                }else{
+                        System.out.println("No encontrado");
+                }
                 // TODO: Realizar busqueda 2 e imprimir si se encontro o no
                 // Fila A: buscar 55 goles activos
                 // Fila B: buscar 40 goles activos
+                System.out.println("Busqueda 2(Busqueda 40 goles): ");
+               League resultt = controller.binarySearchByTotalActiveGoals(copia, 40);
+                if(resultt != null){
+                        System.out.println("Encontrado: "+ resultt.getName());
+                }else{
+                        System.out.println("No encontrado");
+                }
         }
 }
